@@ -2,3 +2,5 @@
 *.ipynb
 *.ipynb_checkpoints/
 *__pycache__/
+*.ini
+!/qrsign/Captain_Nemo*.png

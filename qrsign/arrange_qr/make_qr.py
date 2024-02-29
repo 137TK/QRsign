@@ -3,28 +3,42 @@ import PIL
 from PIL import Image, ImageDraw, ImageFont
 import matplotlib.pyplot as plt
 import datetime
-import argparse
+import re
+# import argparse
 
 
-parser = argparse.ArgumentParser()
-parser.add_argument("name", help="your name. recommended length >3, <8")
-args = parser.parse_args()
+# parser = argparse.ArgumentParser()
+# parser.add_argument("name", help="your name. recommended length >3, <8")
+# args = parser.parse_args()
 
-# 名前と日付を設定
-name = args.name
+# # 名前と日付を設定
+# name = args.name
 date = datetime.datetime.now().strftime("%Y/%m/%d")
+
+def arrange_name_scale(name):
+    if(re.search(r'[ぁ-ん]+|[ァ-ヴー]+|[一-龠]+', name)):
+        if(len(name) < 2):
+            name_scale = 0.3
+        elif(len(name) == 2):
+            name_scale = 0.7
+        else:
+            name_scale = 0.9
+    else:
+        if(len(name) < 5):
+            name_scale = 1
+        elif(len(name) == 5):
+            name_scale = 1.3
+        else:
+            name_scale = 1.6
+    
+    return name_scale
 
 
 
 def make_name_date(name, date):
     size = 256
 
-    if(len(name) < 2):
-        name_scale = 0.3
-    elif(len(name) == 2):
-        name_scale = 0.7
-    else:
-        name_scale = 0.9
+    name_scale = arrange_name_scale(name)
     date_scale = 1.5
     distance = 0.1 # scale
     height_scale = 0.6
@@ -88,6 +102,8 @@ def make_qr(image, name, date):
 # plt.imshow(image)
 
 def main():
+    print("名前を入力してください（３文字以上８文字以内推奨）")
+    name = input()
     image = make_name_date(name, date)
     image = make_qr(image, name, date)
     plt.imshow(image)
