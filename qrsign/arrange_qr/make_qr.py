@@ -83,7 +83,7 @@ def make_qr(image, name, date):
         version=10,
         error_correction=qrcode.constants.ERROR_CORRECT_H
     )
-    rsa_pub = "xxxxx"
+    rsa_pub = "T.B.D"
     qr_big.add_data("name={}:date={}:rsa_pub:{}".format(name, date, rsa_pub).encode("shift-jis"))
     qr_big.make()
     img_qr_big = qr_big.make_image().convert('RGB')
