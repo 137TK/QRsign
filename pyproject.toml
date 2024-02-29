@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "qrsign"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.12,<3.13"
+pandas = "^2.2.1"
+numpy = "^1.26.4"
+matplotlib = "^3.8.3"
+jupyter = "^1.0.0"
+notebook = "^7.1.1"
+pillow = "^10.2.0"
+qrcode = "^7.4.2"
+rsa = "^4.9"
+pyinstaller = "^6.4.0"
+pytk = "^0.0.2.1"
+tkcalendar = "^1.6.1"
+pyperclip = "^1.8.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
